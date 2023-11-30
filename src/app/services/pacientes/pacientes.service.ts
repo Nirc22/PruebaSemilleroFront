@@ -11,7 +11,7 @@ export class PacientesService {
 
   constructor(private http:HttpClient) { }
 
-  getPacientes(id:number):Observable<Pacientes>{
+  getPacientes(pacientes:String):Observable<Pacientes>{
     return this.http.get<Pacientes>(environment.urlApi+"pacientes").pipe(
       catchError(this.handleError)
     )
@@ -21,7 +21,7 @@ export class PacientesService {
       console.error('Se ha producido un error ', error.error);
     }
     else{
-      console.error('El backend retornó el código de estado ', error.status, error.error);
+      console.error('El backend retornó el código de estado ', error);
     }
     return throwError(() => new Error('Algo falló. Por favor intente nuevamente'));
   }

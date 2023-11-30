@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../services/auth/login.service';
-import { Pacientes } from '../interfaces/pacientes';
+import { Administrador } from '../interfaces/administrador';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,8 @@ import { Pacientes } from '../interfaces/pacientes';
 })
 export class DashboardComponent implements OnInit, OnDestroy{
   userLoginOn:boolean=false;
-  userData?:Pacientes;
+  userData?:Administrador;
+
 
   constructor(private loginService:LoginService){}
   ngOnDestroy(): void {
@@ -24,14 +26,11 @@ export class DashboardComponent implements OnInit, OnDestroy{
       }
     });
 
-    this.loginService.currentUserData.subscribe({
-      next:(userData) => {
-        this.userData=userData;
-      }
-    })
-
-
-
+//    this.loginService.currentUserData.subscribe({
+//      next:(userData) => {
+//        this.userData=userData;
+//      }
+//    })
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/auth/login.service';
 import { LoginRequest } from '../interfaces/login-requets';
@@ -11,17 +11,21 @@ import { LoginRequest } from '../interfaces/login-requets';
 })
 export class LoginComponent implements OnInit{
   loginError:string="";
-  loginForm = this.formBuider.group({
-    email:['nico@gmail.com', [Validators.required, Validators.email]],
+  loginForm: LoginRequest = {
+    email:'',
+    password:''
+  };
+  /*loginForm = this.formBuider.group({
+    email:['', [Validators.required, Validators.email]],
     password:['', Validators.required],
-  })
+  })*/
   constructor(private formBuider:FormBuilder, private router:Router, private loginService: LoginService) {//inyectamos
 
   }
   ngOnInit(): void {
 
   }
-
+/*
   get email(){
     return this.loginForm.controls.email;
   }
@@ -29,7 +33,17 @@ export class LoginComponent implements OnInit{
   get password(){
     return this.loginForm.controls.password;
   }
+*/
+  logg(form:NgForm){
+    console.log('form value', form.value);
 
+    this.loginService.logg(this.loginForm)
+      .subscribe(response => {
+        this.router.navigateByUrl('/dashboard');
+    })
+
+  }
+/* Ejemplo de Ivana
   login(){
     if(this.loginForm.valid){
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
@@ -52,6 +66,6 @@ export class LoginComponent implements OnInit{
       this.loginForm.markAllAsTouched();
       alert("Error")
     }
-  }
+  }*/
 
 }

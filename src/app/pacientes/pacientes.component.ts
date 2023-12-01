@@ -11,31 +11,29 @@ import { Pacientes } from '../interfaces/pacientes';
 export class PacientesComponent implements OnInit {
 
   errorMessage:String="";
-  pacientes?:Pacientes;
+  //pacientes?:Pacientes;
   public paciente:Pacientes[] = []
 
   constructor(private pacientesService:PacientesService){
     this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
-      next: (pacientesData) => {
-        this.pacientes=pacientesData;
+      next: (pacientesData: any) => {
+        this.paciente=pacientesData;
       },
       error: (errorData) => {
         this.errorMessage=errorData;
       },
       complete: () =>{
-        console.info("Paciente Data ok", this.pacientes);
+        console.info("Paciente Data ok");
       }
     })
   }
 
   ngOnInit(): void {
 
-    this.pacientesService.get()
-      .subscribe((paciente: any)=>{
-        console.log("pacienteeeeeee", paciente)
-        this.paciente = paciente;
-        console.log("Paciente" , this.paciente)
-      });
+    // this.pacientesService.get()
+    //   .subscribe((paciente: any)=>{
+    //     this.paciente = paciente;
+    //   });
   }
 
 }

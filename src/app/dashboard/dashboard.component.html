@@ -1,5 +1,8 @@
 <p *ngIf="!userLoginOn">Usuario NO autenticado</p>
 <p *ngIf="userLoginOn">Usuario autenticado</p>
+<div class="d-grid">
+  <button class="btn btn-lg btn-primary">Ingresar</button>
+</div>
 <div *ngIf="userLoginOn">
   <p>Nombre: {{userData?.dsnombre}}</p>
   <p>Apellido: {{userData?.email}}</p>

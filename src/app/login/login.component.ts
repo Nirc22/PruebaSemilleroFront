@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit{
     return this.loginForm.controls.password;
   }
 */
-  logg(form:NgForm){
+  login(form:NgForm){
     console.log('form value', form.value);
 
-    this.loginService.logg(this.loginForm)
+    this.loginService.login(this.loginForm)
       .subscribe(response => {
         this.router.navigateByUrl('/dashboard');
     })

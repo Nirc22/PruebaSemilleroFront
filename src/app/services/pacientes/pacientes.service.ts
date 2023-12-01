@@ -16,6 +16,15 @@ export class PacientesService {
       catchError(this.handleError)
     )
   }
+
+  getPacii(){
+    const path = environment.urlApi+"pacientes";
+    return this.http.get<Pacientes>(path);
+  }
+  get(){
+    return this.http.get(environment.urlApi+"pacientes");
+  }
+
   private handleError(error:HttpErrorResponse){
     if(error.status===0){
       console.error('Se ha producido un error ', error.error);

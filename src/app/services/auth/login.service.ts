@@ -18,19 +18,19 @@ export class LoginService {
     this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "")
   }
 
-  login(credentials:LoginRequest):Observable<any>{
-    return this.http.post<any>(environment.urlHost+"login", credentials).pipe(
-      tap( (userData) =>{
-        sessionStorage.setItem("token", userData.token)
-        this.currentUserData.next(userData.token);
-        this.currentUserLoginOn.next(true);
-      }),  //no modifica la secuencia de los observables, devuelve los datos como los recibio de la fuente
-      map((userData) => userData.token),
-      catchError(this.handleError)
-    )
-  }
+  // login(credentials:LoginRequest):Observable<any>{
+  //   return this.http.post<any>(environment.urlHost+"login", credentials).pipe(
+  //     tap( (userData) =>{
+  //       sessionStorage.setItem("token", userData.token)
+  //       this.currentUserData.next(userData.token);
+  //       this.currentUserLoginOn.next(true);
+  //     }),  //no modifica la secuencia de los observables, devuelve los datos como los recibio de la fuente
+  //     map((userData) => userData.token),
+  //     catchError(this.handleError)
+  //   )
+  // }
 
-  logg(creds: LoginRequest){
+  login(creds: LoginRequest){
     return this.http.post(environment.urlHost+"login", creds, {
       observe: 'response'
     }).pipe(map((response: HttpResponse<any>) =>{

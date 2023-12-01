@@ -1,7 +1,16 @@
+import { Data } from "@angular/router";
+
 export interface Pacientes {
-  id:number;
-  name?:string;//?: representa que es opcional
-  lastName?:string;
-  email?:string;
-  message?:string;
+  nmid:number;
+  dsnombre?:string;//?: representa que es opcional
+  nmidespecie?:number;
+  nmidraza?:number;
+  fenacimiento?:Date;
+  nmidtipoidentificacion: number;
+  nmidentificacion: number;
+  dsduenio: string;
+  dsciudad: string;
+  dsdireccion: string;
+  nmtelefono: number;
+  feregistro: Data;
 }

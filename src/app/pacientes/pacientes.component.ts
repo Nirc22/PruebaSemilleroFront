@@ -12,13 +12,9 @@ export class PacientesComponent implements OnInit {
 
   errorMessage:String="";
   pacientes?:Pacientes;
+  public paciente:Pacientes[] = []
 
   constructor(private pacientesService:PacientesService){
-    this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
-      next: (pacientesData) => {
-
-      }
-    })
     this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
       next: (pacientesData) => {
         this.pacientes=pacientesData;
@@ -27,12 +23,19 @@ export class PacientesComponent implements OnInit {
         this.errorMessage=errorData;
       },
       complete: () =>{
-        console.info("Paciente Data ok");
+        console.info("Paciente Data ok", this.pacientes);
       }
     })
   }
 
   ngOnInit(): void {
+
+    this.pacientesService.get()
+      .subscribe((paciente: any)=>{
+        console.log("pacienteeeeeee", paciente)
+        this.paciente = paciente;
+        console.log("Paciente" , this.paciente)
+      });
   }
 
 }

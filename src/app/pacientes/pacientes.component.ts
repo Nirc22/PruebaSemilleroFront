@@ -12,28 +12,44 @@ export class PacientesComponent implements OnInit {
 
   errorMessage:String="";
   //pacientes?:Pacientes;
-  public paciente:Pacientes[] = []
+  public paciente:Pacientes[] = [];
+  pacientes:Pacientes[]=[];
 
   constructor(private pacientesService:PacientesService){
-    this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
-      next: (pacientesData: any) => {
-        this.paciente=pacientesData;
-      },
-      error: (errorData) => {
-        this.errorMessage=errorData;
-      },
-      complete: () =>{
-        console.info("Paciente Data ok");
-      }
-    })
+    // this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
+    //   next: (pacientesData: any) => {
+    //     this.paciente=pacientesData;
+    //   },
+    //   error: (errorData) => {
+    //     this.errorMessage=errorData;
+    //   },
+    //   complete: () =>{
+    //     console.info("Paciente Data ok");
+    //   }
+    // })
   }
 
   ngOnInit(): void {
+    this.optenerPacientes();
 
-    // this.pacientesService.get()
-    //   .subscribe((paciente: any)=>{
-    //     this.paciente = paciente;
-    //   });
+
+  }
+
+  optenerPacientes(){
+    this.pacientesService.getPacientes(environment.urlApi+"pacientes")
+    .subscribe((paciente: any)=>{
+      this.paciente = paciente;
+    });
+  }
+
+  borrarPaciente(paciente: Pacientes){
+    this.pacientesService.deletePaciente(paciente)
+      .subscribe(data=>{
+        this.pacientes = this.paciente.filter(p=>p!==paciente);
+        console.log("Usuario eliminado");
+        this.optenerPacientes();
+      })
+
   }
 
 }

@@ -1,8 +1,15 @@
-<p *ngIf="!userLoginOn">Usuario NO autenticado</p>
-<p *ngIf="userLoginOn">Usuario autenticado</p>
-<div class="d-grid">
-  <button class="btn btn-lg btn-primary">Ingresar</button>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="crearPaciente">Crear Paciente</a>
+  </div>
+</nav>
+<div>
+  <app-pacientes></app-pacientes>
 </div>
+
+
+<!-- <p *ngIf="!userLoginOn">Usuario NO autenticado</p>
+<p *ngIf="userLoginOn">Usuario autenticado</p>
 <div *ngIf="userLoginOn">
   <p>Nombre: {{userData?.dsnombre}}</p>
   <p>Apellido: {{userData?.email}}</p>
@@ -11,4 +18,4 @@
 <div>
   <app-pacientes></app-pacientes>
 </div>
-
+ -->

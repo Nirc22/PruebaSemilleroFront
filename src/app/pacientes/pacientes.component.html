@@ -30,6 +30,10 @@
         <td>{{pacientes.dsdireccion}}</td>
         <td>{{pacientes.nmtelefono}}</td>
         <td>{{pacientes.feregistro}}</td>
+        <td>
+          <button class="button" (click)="borrarPaciente(pacientes)"><i class="bi bi-trash-fill"></i></button>
+          <button class="button"><i class="bi bi-pencil-square"></i></button>
+        </td>
       </tr>
     </tbody>
   </table>

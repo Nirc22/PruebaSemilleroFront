@@ -1,0 +1,50 @@
+<form class="row g-3 needs-validation" [formGroup]="crearpaciente" (ngSubmit)="crearPaciente()"> <!--(ngSubmit)="crearPaciente()" [formGroup=""] se usa para vincular con el formGroup del ts-->
+  <div class="col-md-4">
+    <label for="dsnombre" class="form-label">Nombre Paciente</label>
+    <input type="text" class="form-control" id="dsnombre" formControlName="dsnombre">
+  </div>
+  <div class="col-md-4">
+    <label for="nmidespecie" class="form-label">Especie</label>
+    <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" >
+  </div>
+  <div class="col-md-4">
+    <label for="nmidraza" class="form-label">Raza</label>
+    <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" >
+  </div>
+  <div class="col-md-4">
+    <label for="fenacimiento" class="form-label">Fecha de nacimiento</label>
+    <input type="date" class="form-control" id="fenacimiento" formControlName="fenacimiento" >
+  </div>
+  <div class="col-md-4">
+    <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
+    <input type="number" class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion" >
+  </div>
+  <div class="col-md-4">
+    <label for="nmidentificacion" class="form-label">Número de identificación</label>
+    <input type="number" class="form-control" id="nmidentificacion" formControlName="nmidentificacion" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsduenio" class="form-label">Dueño</label>
+    <input type="text" class="form-control" id="dsduenio" formControlName="dsduenio" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsciudad" class="form-label">Ciudad</label>
+    <input type="text" class="form-control" id="dsciudad" formControlName="dsciudad" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsdireccion" class="form-label">Dirección</label>
+    <input type="text" class="form-control" id="dsdireccion" formControlName="dsdireccion" >
+  </div>
+  <div class="col-md-4">
+    <label for="nmtelefono" class="form-label">Teléfono</label>
+    <input type="number" class="form-control" id="nmtelefono" formControlName="nmtelefono" >
+  </div>
+  <div class="col-md-4">
+    <label for="feregistro" class="form-label">Fecha de registro</label>
+    <input type="date" class="form-control" id="feregistro" formControlName="feregistro" >
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Crear</button>
+  </div>
+</form>

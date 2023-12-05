@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CrearPacienteComponent
   ],
   imports: [
     BrowserModule,

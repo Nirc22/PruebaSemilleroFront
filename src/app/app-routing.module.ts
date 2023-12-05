@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PacientesComponent } from './pacientes/pacientes.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 import { AuthGuard } from './helpers/auth.guard';
 
 
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'crearPaciente',
+    component: CrearPacienteComponent,
     canActivate: [AuthGuard]
   }
 

@@ -5,6 +5,7 @@
   </div>
   <div class="col-md-4">
     <label for="nmidespecie" class="form-label">Especie</label>
+    <br>
     <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let especie of especies" value={{especie.nmidespecie}}>{{especie.dsnombre}}</option>
     </select>
@@ -13,6 +14,7 @@
   </div>
   <div class="col-md-4">
     <label for="nmidraza" class="form-label">Raza</label>
+    <br>
     <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let raza of razas" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
     </select>
@@ -24,6 +26,7 @@
   </div>
   <div class="col-md-4">
     <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
+    <br>
     <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let tipodocumento of tipoDocumentos" value={{tipodocumento.nmidtipoidentificacion}}>{{tipodocumento.dsnombre}}</option>
     </select>

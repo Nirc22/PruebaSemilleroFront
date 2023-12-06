@@ -3,10 +3,19 @@ import { Data } from "@angular/router";
 export interface Pacientes {
   nmid?:number;//?: representa que es opcional
   dsnombre:string;
-  nmidespecie:number;
-  nmidraza:number;
+  nmidespecie:{
+    nmidespecie:Number,
+    dsnombre: string,
+  };
+  nmidraza:{
+    nmidraza:Number,
+    dsnombre: string,
+  };
   fenacimiento:Date;
-  nmidtipoidentificacion: number;
+  nmidtipoidentificacion: {
+    nmidtipoidentificacion:Number,
+    dsnombre: string,
+  };
   nmidentificacion: number;
   dsduenio: string;
   dsciudad: string;

@@ -1,7 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Especies } from 'src/app/interfaces/especies';
 import { Pacientes } from 'src/app/interfaces/pacientes';
+import { Razas } from 'src/app/interfaces/razas';
+import { TipoDocumento } from 'src/app/interfaces/tipo-documento';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -38,4 +41,24 @@ export class PacientesService {
   deletePaciente(paciente:Pacientes){
     return this.http.delete<Pacientes>(environment.urlApi+"pacientes/"+paciente.nmid)
   }
+
+  getRazas(razas:String):Observable<Razas>{
+    return this.http.get<Razas>(environment.urlApi+"getRazas").pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getEspecies(especies:String):Observable<Especies>{
+    return this.http.get<Especies>(environment.urlApi+"getEspecies").pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getTipoDocumento(especies:String):Observable<TipoDocumento>{
+    return this.http.get<TipoDocumento>(environment.urlApi+"getTiposDocumentos").pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
 }

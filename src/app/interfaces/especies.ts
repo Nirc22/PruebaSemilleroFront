@@ -1,4 +1,4 @@
 export interface Especies {
-  nmid?:number;//?: representa que es opcional
+  nmidespecie?:number;//?: representa que es opcional
   dsnombre:string;
 }

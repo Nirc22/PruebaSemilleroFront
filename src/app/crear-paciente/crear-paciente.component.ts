@@ -4,6 +4,9 @@ import { Pacientes } from '../interfaces/pacientes';
 import { PacientesService } from '../services/pacientes/pacientes.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Razas } from '../interfaces/razas';
+import { Especies } from '../interfaces/especies';
+import { TipoDocumento } from '../interfaces/tipo-documento';
 
 @Component({
   selector: 'app-crear-paciente',
@@ -16,11 +19,20 @@ export class CrearPacienteComponent implements OnInit {
 
   errorMessage:String="";
 
+  razas:Razas[] = [];
+  especies:Especies[] = [];
+  tipoDocumentos:TipoDocumento[] = [];
+
+  selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}}
+
 
   // crearpaciente: Pacientes = this.formBuider.group({
   crearpaciente: FormGroup = this.formBuider.group({
     dsnombre: ['',[Validators.required]],
-    nmidespecie: ['',[Validators.required]],
+    nmidespecie: {
+      nmidespecie:'',
+      dsnombre:''
+    },
     nmidraza: ['',[Validators.required]],
     fenacimiento: ['',Validators.required],
     nmidtipoidentificacion: ['',[Validators.required]],
@@ -36,6 +48,9 @@ export class CrearPacienteComponent implements OnInit {
   constructor(private formBuider:FormBuilder, private pacientesService:PacientesService, private router: Router ) { }
 
   ngOnInit(): void {
+    this.obtenerRazas();
+    this.optenerEspecies();
+    this.optenerTipoDocumentos();
   }
 
   crearPaciente(){
@@ -49,36 +64,32 @@ export class CrearPacienteComponent implements OnInit {
         this.router.navigate(['dashboard']);;
     })
 
-    // console.log('Values', registrarPaciente);
-
-    // this.pacientesService.crearPaciente(values)
-    // this.pacientesService.crearPaciente(registrarPaciente).subscribe({
-    //   next: (pacientesData: any) => {
-    //     this.paciente=pacientesData;
-    //   },
-    //   error: (errorData) => {
-    //     this.errorMessage=errorData;
-    //   },
-    //   complete: () =>{
-    //     console.info("Paciente Data ok");
-    //   }
-    // })
-
-
-    // .subscribe({
-    //   next: (pacientesData: any) => {
-    //     this.paciente=pacientesData;
-    //   },
-      // .subscribe(() => {
-
-      // })
-      // .subscribe(() =>{
-      //   this.pacientesService.getPacientes()
-      //     .subscribe((tareas: any) =>{
-      //       console.log('Tareas', tareas);
-      //       this.tareas = tareas
-      //     })
-      // })
   }
+
+  obtenerRazas(){
+    this.pacientesService.getRazas(environment.urlApi+"getRazas")
+    .subscribe((razas: any)=>{
+      this.razas = razas;
+      console.log("razas", this.razas)
+    })
+  }
+
+
+  optenerEspecies(){
+    this.pacientesService.getEspecies(environment.urlApi+"getEspecies")
+    .subscribe((especies: any)=>{
+      this.especies = especies;
+      console.log("especies", this.especies)
+    });
+  }
+
+  optenerTipoDocumentos(){
+    this.pacientesService.getTipoDocumento(environment.urlApi+"getTiposDocumentos")
+    .subscribe((tipoDocumentos: any)=>{
+      this.tipoDocumentos = tipoDocumentos;
+      console.log("Documentos", this.tipoDocumentos)
+    });
+  }
+
 
 }

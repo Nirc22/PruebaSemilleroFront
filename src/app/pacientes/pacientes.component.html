@@ -20,10 +20,10 @@
       <tr *ngFor="let pacientes of paciente">
         <td>{{pacientes.nmid}}</td>
         <td>{{pacientes.dsnombre }}</td>
-        <td>{{pacientes.nmidespecie}}</td>
-        <td>{{pacientes.nmidraza}}</td>
+        <td>{{pacientes.nmidespecie.dsnombre}}</td>
+        <td>{{pacientes.nmidraza.dsnombre}}</td>
         <td>{{pacientes.fenacimiento}}</td>
-        <td>{{pacientes.nmidtipoidentificacion}}</td>
+        <td>{{pacientes.nmidtipoidentificacion.dsnombre}}</td>
         <td>{{pacientes.nmidentificacion}}</td>
         <td>{{pacientes.dsduenio}}</td>
         <td>{{pacientes.dsciudad}}</td>

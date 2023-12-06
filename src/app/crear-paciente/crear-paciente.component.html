@@ -5,11 +5,18 @@
   </div>
   <div class="col-md-4">
     <label for="nmidespecie" class="form-label">Especie</label>
-    <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" >
+    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option *ngFor="let especie of especies" value={{especie.nmidespecie}}>{{especie.dsnombre}}</option>
+    </select>
+
+    <!-- <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" > -->
   </div>
   <div class="col-md-4">
     <label for="nmidraza" class="form-label">Raza</label>
-    <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" >
+    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option *ngFor="let raza of razas" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
+    </select>
+    <!-- <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" > -->
   </div>
   <div class="col-md-4">
     <label for="fenacimiento" class="form-label">Fecha de nacimiento</label>
@@ -17,7 +24,10 @@
   </div>
   <div class="col-md-4">
     <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
-    <input type="number" class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion" >
+    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option *ngFor="let tipodocumento of tipoDocumentos" value={{tipodocumento.nmidtipoidentificacion}}>{{tipodocumento.dsnombre}}</option>
+    </select>
+    <!-- <input type="number" class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion" > -->
   </div>
   <div class="col-md-4">
     <label for="nmidentificacion" class="form-label">Número de identificación</label>

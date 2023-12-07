@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Pacientes } from '../interfaces/pacientes';
 import { PacientesService } from '../services/pacientes/pacientes.service';
 import { Router } from '@angular/router';
@@ -29,13 +29,16 @@ export class CrearPacienteComponent implements OnInit {
   // crearpaciente: Pacientes = this.formBuider.group({
   crearpaciente: FormGroup = this.formBuider.group({
     dsnombre: ['',[Validators.required]],
-    nmidespecie: {
-      nmidespecie:'',
-      dsnombre:''
-    },
-    nmidraza: ['',[Validators.required]],
+    nmidespecie: new FormGroup({
+      nmidespecie: new FormControl('')
+    }),
+    nmidraza: new FormGroup({
+      nmidraza: new FormControl('')
+    }),
     fenacimiento: ['',Validators.required],
-    nmidtipoidentificacion: ['',[Validators.required]],
+    nmidtipoidentificacion: new FormGroup({
+      nmidtipoidentificacion: new FormControl('')
+    }),
     nmidentificacion: ['',[Validators.required]],
     dsduenio: ['',[Validators.required]],
     dsciudad: ['',[Validators.required]],

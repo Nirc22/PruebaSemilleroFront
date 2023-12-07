@@ -3,20 +3,20 @@
     <label for="dsnombre" class="form-label">Nombre Paciente</label>
     <input type="text" class="form-control" id="dsnombre" formControlName="dsnombre">
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" formGroupName="nmidespecie">
     <label for="nmidespecie" class="form-label">Especie</label>
     <br>
-    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+    <select class="form-control" id="nmidespecie" formControlName="nmidespecie"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let especie of especies" value={{especie.nmidespecie}}>{{especie.dsnombre}}</option>
     </select>
 
     <!-- <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" > -->
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" formGroupName="nmidraza">
     <label for="nmidraza" class="form-label">Raza</label>
     <br>
-    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
-      <option *ngFor="let raza of razas" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
+    <select class="form-control" id="nmidraza" formControlName="nmidraza"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option class="form-option" id="nmidraza" *ngFor="let raza of razas" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
     </select>
     <!-- <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" > -->
   </div>
@@ -24,10 +24,10 @@
     <label for="fenacimiento" class="form-label">Fecha de nacimiento</label>
     <input type="date" class="form-control" id="fenacimiento" formControlName="fenacimiento" >
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" formGroupName="nmidtipoidentificacion">
     <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
     <br>
-    <select> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+    <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let tipodocumento of tipoDocumentos" value={{tipodocumento.nmidtipoidentificacion}}>{{tipodocumento.dsnombre}}</option>
     </select>
     <!-- <input type="number" class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion" > -->

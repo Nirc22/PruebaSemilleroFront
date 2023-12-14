@@ -60,6 +60,19 @@ export class UpdatePacienteComponent implements OnInit {
       .subscribe((data: any) =>{
         this.paciente = data;
         console.log(this.paciente)
+        this.updatepaciente.setValue({
+          dsnombre: data.dsnombre,
+          nmidespecie: {nmidespecie: data.nmidespecie.nmidespecie},
+          nmidraza: {nmidraza: data.nmidraza.nmidraza},
+          fenacimiento: data.fenacimiento,
+          nmidtipoidentificacion: {nmidtipoidentificacion: data.nmidtipoidentificacion.nmidtipoidentificacion},
+          nmidentificacion: data.nmidentificacion,
+          dsduenio: data.dsduenio,
+          dsciudad: data.dsciudad,
+          dsdireccion: data.dsdireccion,
+          nmtelefono: data.nmtelefono,
+          feregistro: data.feregistro,
+        })
 
       })
   }

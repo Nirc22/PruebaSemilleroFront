@@ -5,6 +5,7 @@ import { PacientesComponent } from './pacientes/pacientes.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
+import { UpdatePacienteComponent } from './update-paciente/update-paciente.component';
 import { AuthGuard } from './helpers/auth.guard';
 
 
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'crearPaciente',
     component: CrearPacienteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'updatePaciente',
+    component: UpdatePacienteComponent,
     canActivate: [AuthGuard]
   }
 

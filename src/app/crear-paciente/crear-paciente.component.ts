@@ -30,7 +30,7 @@ export class CrearPacienteComponent implements OnInit {
   crearpaciente: FormGroup = this.formBuider.group({
     dsnombre: ['',[Validators.required]],
     nmidespecie: new FormGroup({
-      nmidespecie: new FormControl('')
+      nmidespecie: new FormControl(''),
     }),
     nmidraza: new FormGroup({
       nmidraza: new FormControl('')
@@ -52,8 +52,8 @@ export class CrearPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerRazas();
-    this.optenerEspecies();
-    this.optenerTipoDocumentos();
+    this.obtenerEspecies();
+    this.obtenerTipoDocumentos();
   }
 
   crearPaciente(){
@@ -78,7 +78,7 @@ export class CrearPacienteComponent implements OnInit {
   }
 
 
-  optenerEspecies(){
+  obtenerEspecies(){
     this.pacientesService.getEspecies(environment.urlApi+"getEspecies")
     .subscribe((especies: any)=>{
       this.especies = especies;
@@ -86,7 +86,7 @@ export class CrearPacienteComponent implements OnInit {
     });
   }
 
-  optenerTipoDocumentos(){
+  obtenerTipoDocumentos(){
     this.pacientesService.getTipoDocumento(environment.urlApi+"getTiposDocumentos")
     .subscribe((tipoDocumentos: any)=>{
       this.tipoDocumentos = tipoDocumentos;

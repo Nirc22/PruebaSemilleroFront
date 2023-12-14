@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacientesService } from '../services/pacientes/pacientes.service';
 import { environment } from 'src/environments/environment';
 import { Pacientes } from '../interfaces/pacientes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pacientes',
@@ -15,7 +16,7 @@ export class PacientesComponent implements OnInit {
   public paciente:Pacientes[] = [];
   pacientes:Pacientes[]=[];
 
-  constructor(private pacientesService:PacientesService){
+  constructor(private pacientesService:PacientesService, private router:Router){
     // this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
     //   next: (pacientesData: any) => {
     //     this.paciente=pacientesData;
@@ -43,13 +44,21 @@ export class PacientesComponent implements OnInit {
   }
 
   borrarPaciente(paciente: Pacientes){
-    this.pacientesService.deletePaciente(paciente)
+    const ok = confirm('¿Estás seguro de eliminar este paciente?');
+
+    if (ok){
+      this.pacientesService.deletePaciente(paciente)
       .subscribe(data=>{
         this.pacientes = this.paciente.filter(p=>p!==paciente);
         console.log("Usuario eliminado");
         this.optenerPacientes();
-      })
+      });
+    }
+  }
 
+  updatePaciente(paciente:Pacientes):void{
+    localStorage.setItem("id", paciente.nmid.toString());
+    this.router.navigate(["updatePaciente"]);
   }
 
 }

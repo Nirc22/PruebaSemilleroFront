@@ -1,7 +1,7 @@
 import { Data } from "@angular/router";
 
 export interface Pacientes {
-  nmid?:number;//?: representa que es opcional
+  nmid:number;//?: representa que es opcional
   dsnombre:string;
   nmidespecie:{
     nmidespecie:Number,

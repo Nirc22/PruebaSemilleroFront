@@ -19,7 +19,7 @@ export class PacientesService {
   // }
 
   getPacientes(pacientes:String):Observable<Pacientes>{
-    return this.http.get<Pacientes>(environment.urlApi+"pacientes").pipe(
+    return this.http.get<Pacientes>(environment.urlApi+"getPacientes").pipe(
       catchError(this.handleError)
     )
   }
@@ -41,6 +41,16 @@ export class PacientesService {
   deletePaciente(paciente:Pacientes){
     return this.http.delete<Pacientes>(environment.urlApi+"pacientes/"+paciente.nmid)
   }
+
+  getPacienteId(id:number){
+    return this.http.get<Pacientes>(environment.urlApi+"getPacienteId/"+id)//terminar de hacer
+  }
+
+  updatePaciente(paciente:Pacientes){
+    return this.http.put<Pacientes>(environment.urlApi+"pacientes/update/"+paciente.nmid, paciente)
+  }
+
+
 
   getRazas(razas:String):Observable<Razas>{
     return this.http.get<Razas>(environment.urlApi+"getRazas").pipe(

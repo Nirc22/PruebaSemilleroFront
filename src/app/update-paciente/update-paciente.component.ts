@@ -25,7 +25,6 @@ export class UpdatePacienteComponent implements OnInit {
   tipoDocumentos:TipoDocumento[] = [];
   personas:Personas[] = [];
 
-  id = 0;
 
   updatepaciente: FormGroup = this.formBuilder.group({
     nmid:'',
@@ -65,6 +64,7 @@ export class UpdatePacienteComponent implements OnInit {
       .subscribe((data: any) =>{
         this.paciente = data;
         console.log(this.paciente)
+        localStorage.removeItem("id")
         this.updatepaciente.setValue({
           nmid: data.nmid,
           dsnombre: data.dsnombre,
@@ -124,6 +124,7 @@ export class UpdatePacienteComponent implements OnInit {
 
   volver(){
     this.router.navigate(['dashboard']);
+    localStorage.removeItem("id")
   }
 
 }

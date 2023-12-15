@@ -14,6 +14,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 import { UpdatePacienteComponent } from './update-paciente/update-paciente.component';
 import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
+import { UpdatePersonaComponent } from './update-persona/update-persona.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
     DashboardComponent,
     CrearPacienteComponent,
     UpdatePacienteComponent,
-    CrearPersonaComponent
+    CrearPersonaComponent,
+    UpdatePersonaComponent
   ],
   imports: [
     BrowserModule,

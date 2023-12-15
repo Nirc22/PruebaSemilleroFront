@@ -3,6 +3,7 @@ import { PacientesService } from '../services/pacientes/pacientes.service';
 import { environment } from 'src/environments/environment';
 import { Pacientes } from '../interfaces/pacientes';
 import { Router } from '@angular/router';
+import { Personas } from '../interfaces/personas';
 
 @Component({
   selector: 'app-pacientes',
@@ -15,6 +16,7 @@ export class PacientesComponent implements OnInit {
   //pacientes?:Pacientes;
   public paciente:Pacientes[] = [];
   pacientes:Pacientes[]=[];
+  persona:Personas[] = [];
 
   constructor(private pacientesService:PacientesService, private router:Router){
     // this.pacientesService.getPacientes(environment.urlApi+"pacientes").subscribe({
@@ -58,6 +60,11 @@ export class PacientesComponent implements OnInit {
   updatePaciente(paciente:Pacientes):void{
     localStorage.setItem("id", paciente.nmid.toString());
     this.router.navigate(["updatePaciente"]);
+  }
+
+  updatePersona(persona:Pacientes):void{
+    localStorage.setItem("id", persona.nmidpersona.nmidpersona.toString());
+    this.router.navigate(["updatePersona"]);
   }
 
 }

@@ -1,0 +1,43 @@
+<form class="row g-3 needs-validation" [formGroup]="updatepersona" (ngSubmit)="updatePersona()"> <!--(ngSubmit)="crearPaciente()" [formGroup=""] se usa para vincular con el formGroup del ts-->
+  <div class="col-md-4" formGroupName="nmidtipoidentificacion">
+    <label for="nmidtipoidentificacion" class="form-label">Tipo documento</label>
+    <br>
+    <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option *ngFor="let tipoDocumento of tipoDocumentos" value={{tipoDocumento.nmidtipoidentificacion}}>{{tipoDocumento.dsnombre}}</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <label for="nmidentificacion" class="form-label">Número de identificación</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="nmidentificacion">
+  </div>
+  <div class="col-md-4">
+    <label for="dsnombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="dsnombre">
+  </div>
+  <div class="col-md-4">
+    <label for="dsapellido" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="dsapellido">
+  </div>
+  <div class="col-md-4">
+    <label for="dsciudad" class="form-label">Ciudad</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="dsciudad">
+  </div>
+  <div class="col-md-4">
+    <label for="dsdireccion" class="form-label">Dirección</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="dsdireccion">
+  </div>
+  <div class="col-md-4">
+    <label for="nmtelefono" class="form-label">Teléfono</label>
+    <input type="text" class="form-control" id="ngModel"formControlName="nmtelefono">
+  </div>
+
+
+    <!-- <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" > -->
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Actualizar</button>
+
+    <button class="btn btn-primary" type="button" (click)="volver()">Regresar</button>
+  </div>
+</form>
+

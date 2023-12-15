@@ -26,7 +26,8 @@
         <td>{{pacientes.fenacimiento}}</td>
         <td>{{pacientes.nmidpersona.nmidtipoidentificacion.dsnombre}}</td>
         <td>{{pacientes.nmidpersona.nmidentificacion}}</td>
-        <td>{{pacientes.nmidpersona.dsnombre}}</td>
+        <button (click)="updatePersona(pacientes)">{{pacientes.nmidpersona.dsnombre}}</button>
+        <!-- <td>{{pacientes.nmidpersona.dsnombre}}</td> -->
         <td>{{pacientes.nmidpersona.dsapellido}}</td>
         <td>{{pacientes.nmidpersona.dsciudad}}</td>
         <td>{{pacientes.nmidpersona.dsdireccion}}</td>
@@ -35,6 +36,7 @@
         <td>
           <button class="button" (click)="borrarPaciente(pacientes)"><i class="bi bi-trash-fill"></i></button>
           <button class="button" (click)="updatePaciente(pacientes)"><i class="bi bi-pencil-square"></i></button>
+
         </td>
       </tr>
     </tbody>

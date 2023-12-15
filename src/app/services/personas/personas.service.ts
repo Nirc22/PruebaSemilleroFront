@@ -18,4 +18,12 @@ export class PersonasService {
   crearPersona(persona:Personas){
     return this.http.post<Personas>(environment.urlApi+"persona/crear", persona)
   }
+
+  getPersonaId(id:number){
+    return this.http.get<Personas>(environment.urlApi+"getPersonaId/"+id)
+  }
+
+  updatePersona(persona:Personas){
+    return this.http.put<Personas>(environment.urlApi+"persona/update/"+persona.nmidpersona, persona)
+  }
 }

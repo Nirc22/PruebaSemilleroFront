@@ -6,8 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 import { UpdatePacienteComponent } from './update-paciente/update-paciente.component';
+import { UpdatePersonaComponent } from './update-persona/update-persona.component';
 import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -36,6 +38,11 @@ const routes: Routes = [
   {
     path: 'crearPersona',
     component: CrearPersonaComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'updatePersona',
+    component: UpdatePersonaComponent,
     canActivate: [AuthGuard]
   }
 

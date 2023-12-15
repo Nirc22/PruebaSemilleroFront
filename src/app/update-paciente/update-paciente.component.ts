@@ -7,6 +7,8 @@ import { Razas } from '../interfaces/razas';
 import { Especies } from '../interfaces/especies';
 import { TipoDocumento } from '../interfaces/tipo-documento';
 import { Router } from '@angular/router';
+import { PersonasService } from '../services/personas/personas.service';
+import { Personas } from '../interfaces/personas';
 
 @Component({
   selector: 'app-update-paciente',
@@ -21,6 +23,7 @@ export class UpdatePacienteComponent implements OnInit {
   razas:Razas[] = [];
   especies:Especies[] = [];
   tipoDocumentos:TipoDocumento[] = [];
+  personas:Personas[] = [];
 
   id = 0;
 
@@ -34,25 +37,26 @@ export class UpdatePacienteComponent implements OnInit {
       nmidraza: new FormControl('')
     }),
     fenacimiento: ['',Validators.required],
-    nmidtipoidentificacion: new FormGroup({
-      nmidtipoidentificacion: new FormControl('')
+    nmidpersona: new FormGroup({
+      nmidpersona: new FormControl(''),
+      // nmidentificacion:new FormControl(''),
+      // dsnombre:new FormControl(''),
+      // dsapellido:new FormControl(''),
+      // dsciudad:new FormControl(''),
+      // dsdireccion:new FormControl(''),
+      // nmtelefono:new FormControl('')
     }),
-    nmidentificacion: ['',[Validators.required]],
-    dsduenio: ['',[Validators.required]],
-    dsciudad: ['',[Validators.required]],
-    dsdireccion: ['',[Validators.required]],
-    nmtelefono: ['',[Validators.required]],
     feregistro: ['',[Validators.required]],
-
   });
 
-  constructor(private formBuilder:FormBuilder, private pacientesService:PacientesService, private router:Router ) { }
+  constructor(private formBuilder:FormBuilder, private pacientesService:PacientesService, private router:Router, private personasService:PersonasService ) { }
 
   ngOnInit(): void {
     this.getPacienteId();
     this.obtenerRazas();
     this.obtenerEspecies();
     this.optenerTipoDocumentos();
+    this.obtenerPersonas();
   }
 
   getPacienteId() {
@@ -67,12 +71,7 @@ export class UpdatePacienteComponent implements OnInit {
           nmidespecie: {nmidespecie: data.nmidespecie.nmidespecie},
           nmidraza: {nmidraza: data.nmidraza.nmidraza},
           fenacimiento: data.fenacimiento,
-          nmidtipoidentificacion: {nmidtipoidentificacion: data.nmidtipoidentificacion.nmidtipoidentificacion},
-          nmidentificacion: data.nmidentificacion,
-          dsduenio: data.dsduenio,
-          dsciudad: data.dsciudad,
-          dsdireccion: data.dsdireccion,
-          nmtelefono: data.nmtelefono,
+          nmidpersona: {nmidpersona: data.nmidpersona.nmidpersona},
           feregistro: data.feregistro,
         })
 
@@ -112,6 +111,14 @@ export class UpdatePacienteComponent implements OnInit {
     .subscribe((tipoDocumentos: any)=>{
       this.tipoDocumentos = tipoDocumentos;
       console.log("Documentos", this.tipoDocumentos)
+    });
+  }
+
+  obtenerPersonas(){
+    this.personasService.getPersonas(environment.urlApi+"getPersonas")
+      .subscribe((personas: any)=>{
+      this.personas = personas;
+      console.log("Personas", this.personas)
     });
   }
 

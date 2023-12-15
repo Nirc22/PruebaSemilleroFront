@@ -24,33 +24,13 @@
     <label for="fenacimiento" class="form-label">Fecha de nacimiento</label>
     <input type="date" class="form-control" id="fenacimiento" formControlName="fenacimiento" >
   </div>
-  <div class="col-md-4" formGroupName="nmidtipoidentificacion">
-    <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
+  <div class="col-md-4" formGroupName="nmidpersona">
+    <label for="nmidpersona" class="form-label">Dueño</label>
     <br>
-    <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
-      <option *ngFor="let tipodocumento of tipoDocumentos" value={{tipodocumento.nmidtipoidentificacion}}>{{tipodocumento.dsnombre}}</option>
+    <select class="form-control" id="nmidpersona" formControlName="nmidpersona"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+      <option *ngFor="let persona of personas" value={{persona.nmidpersona}}>{{persona.dsnombre}} {{persona.dsapellido}}</option>
     </select>
     <!-- <input type="number" class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion" > -->
-  </div>
-  <div class="col-md-4">
-    <label for="nmidentificacion" class="form-label">Número de identificación</label>
-    <input type="number" class="form-control" id="nmidentificacion" formControlName="nmidentificacion" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsduenio" class="form-label">Dueño</label>
-    <input type="text" class="form-control" id="dsduenio" formControlName="dsduenio" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsciudad" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="dsciudad" formControlName="dsciudad" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsdireccion" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="dsdireccion" formControlName="dsdireccion" >
-  </div>
-  <div class="col-md-4">
-    <label for="nmtelefono" class="form-label">Teléfono</label>
-    <input type="number" class="form-control" id="nmtelefono" formControlName="nmtelefono" >
   </div>
   <div class="col-md-4">
     <label for="feregistro" class="form-label">Fecha de registro</label>

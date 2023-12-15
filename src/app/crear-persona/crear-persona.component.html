@@ -1,0 +1,45 @@
+<form class="row g-3 needs-validation" [formGroup]="crearpersona" (ngSubmit)="crearPersona()"> <!--(ngSubmit)="crearPaciente()" [formGroup=""] se usa para vincular con el formGroup del ts-->
+  <div class="col-md-4" formGroupName="nmidtipoidentificacion">
+    <label for="nmidtipoidentificacion" class="form-label">Tipo Documento</label>
+    <br>
+    <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion">
+      <option *ngFor="let tipoDocumento of tipoDocumentos" value={{tipoDocumento.nmidtipoidentificacion}}>{{tipoDocumento.dsnombre}}</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="nmidentificacion" class="form-label">Número de identificación</label>
+    <input type="number" class="form-control" id="nmidentificacion" formControlName="nmidentificacion" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsnombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="dsnombre" formControlName="dsnombre" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsapellido" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="dsapellido" formControlName="dsapellido" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsciudad" class="form-label">Ciudad</label>
+    <input type="text" class="form-control" id="dsciudad" formControlName="dsciudad" >
+  </div>
+  <div class="col-md-4">
+    <label for="dsdireccion" class="form-label">Dirección</label>
+    <input type="text" class="form-control" id="dsdireccion" formControlName="dsdireccion" >
+  </div>
+  <div class="col-md-4">
+    <label for="nmtelefono" class="form-label">Teléfono</label>
+    <input type="number" class="form-control" id="nmtelefono" formControlName="nmtelefono" >
+  </div>
+  <!-- <div class="col-md-4">
+    <label for="feregistro" class="form-label">Fecha de registro</label>
+    <input type="date" class="form-control" id="feregistro" formControlName="feregistro" >
+  </div> -->
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Crear</button>
+
+    <button class="btn btn-primary" type="button" (click)="volver()">Regresar</button>
+  </div>
+</form>
+

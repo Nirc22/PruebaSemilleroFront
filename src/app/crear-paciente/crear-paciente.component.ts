@@ -23,7 +23,6 @@ export class CrearPacienteComponent implements OnInit {
 
   razas:Razas[] = [];
   especies:Especies[] = [];
-  tipoDocumentos:TipoDocumento[] = [];
   personas:Personas[] = [];
 
   selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}}
@@ -50,7 +49,6 @@ export class CrearPacienteComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerRazas();
     this.obtenerEspecies();
-    this.obtenerTipoDocumentos();
     this.obtenerPersonas();
   }
 
@@ -84,13 +82,7 @@ export class CrearPacienteComponent implements OnInit {
     });
   }
 
-  obtenerTipoDocumentos(){
-    this.pacientesService.getTipoDocumento(environment.urlApi+"getTiposDocumentos")
-    .subscribe((tipoDocumentos: any)=>{
-      this.tipoDocumentos = tipoDocumentos;
-      console.log("Documentos", this.tipoDocumentos)
-    });
-  }
+
 
   obtenerPersonas(){
     this.personasService.getPersonas(environment.urlApi+"getPersonas")

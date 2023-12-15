@@ -14,4 +14,8 @@ export class PersonasService {
   getPersonas(persona:String):Observable<Personas>{
     return this.http.get<Personas>(environment.urlApi+"getPersonas")
   }
+
+  crearPersona(persona:Personas){
+    return this.http.post<Personas>(environment.urlApi+"persona/crear", persona)
+  }
 }

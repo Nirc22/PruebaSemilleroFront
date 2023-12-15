@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 import { UpdatePacienteComponent } from './update-paciente/update-paciente.component';
+import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UpdatePacienteComponent } from './update-paciente/update-paciente.compo
     FooterComponent,
     DashboardComponent,
     CrearPacienteComponent,
-    UpdatePacienteComponent
+    UpdatePacienteComponent,
+    CrearPersonaComponent
   ],
   imports: [
     BrowserModule,

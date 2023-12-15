@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CrearPacienteComponent } from './crear-paciente/crear-paciente.component';
 import { UpdatePacienteComponent } from './update-paciente/update-paciente.component';
+import { CrearPersonaComponent } from './crear-persona/crear-persona.component';
 import { AuthGuard } from './helpers/auth.guard';
 
 
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'updatePaciente',
     component: UpdatePacienteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'crearPersona',
+    component: CrearPersonaComponent,
     canActivate: [AuthGuard]
   }
 

@@ -59,8 +59,8 @@ export class CrearPacienteComponent implements OnInit {
     this.pacientesService.crearPaciente(paciente)
       .subscribe((data: any)=>{
         this.paciente = data;
-        console.log("Paciente registrado")
-        this.router.navigate(['dashboard']);;
+        console.log("Paciente registrado");
+        this.router.navigate(['dashboard']);
     })
 
   }

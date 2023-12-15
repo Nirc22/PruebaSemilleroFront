@@ -38,12 +38,6 @@ export class UpdatePacienteComponent implements OnInit {
     fenacimiento: ['',Validators.required],
     nmidpersona: new FormGroup({
       nmidpersona: new FormControl(''),
-      // nmidentificacion:new FormControl(''),
-      // dsnombre:new FormControl(''),
-      // dsapellido:new FormControl(''),
-      // dsciudad:new FormControl(''),
-      // dsdireccion:new FormControl(''),
-      // nmtelefono:new FormControl('')
     }),
     feregistro: ['',[Validators.required]],
   });

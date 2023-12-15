@@ -9,7 +9,8 @@
         <th scope="col">Nacimiento</th>
         <th scope="col">Tipo Identificación</th>
         <th scope="col"># Identificación</th>
-        <th scope="col">Dueño</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
         <th scope="col">Ciudad</th>
         <th scope="col">Dirección</th>
         <th scope="col">Telefono</th>
@@ -23,9 +24,14 @@
         <td>{{pacientes.nmidespecie.dsnombre}}</td>
         <td>{{pacientes.nmidraza.dsnombre}}</td>
         <td>{{pacientes.fenacimiento}}</td>
-        <td>{{pacientes.nmidtipoidentificacion.dsnombre}}</td>
+        <td>{{pacientes.nmidpersona.nmidtipoidentificacion.dsnombre}}</td>
+        <td>{{pacientes.nmidpersona.nmidentificacion}}</td>
+        <td>{{pacientes.nmidpersona.dsnombre}}</td>
+        <td>{{pacientes.nmidpersona.dsapellido}}</td>
+        <td>{{pacientes.nmidpersona.dsciudad}}</td>
+        <td>{{pacientes.nmidpersona.dsdireccion}}</td>
+        <td>{{pacientes.nmidpersona.nmtelefono}}</td>
         <td>{{pacientes.feregistro}}</td>
-        <td>{{pacientes.nmidpersona}}</td>
         <td>
           <button class="button" (click)="borrarPaciente(pacientes)"><i class="bi bi-trash-fill"></i></button>
           <button class="button" (click)="updatePaciente(pacientes)"><i class="bi bi-pencil-square"></i></button>

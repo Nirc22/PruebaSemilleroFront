@@ -16,10 +16,18 @@ export interface Pacientes {
     nmidtipoidentificacion:Number,
     dsnombre: string,
   };
-  nmidentificacion: Number;
-  dsduenio: string;
-  dsciudad: string;
-  dsdireccion: string;
-  nmtelefono: Number;
   feregistro: Date;
+  nmidpersona:{
+    nmidpersona:Number,
+    nmidtipoidentificacion:{
+      nmidtipoidentificacion:Number,
+      dsnombre:string
+    },
+    nmidentificacion:Number,
+    dsnombre:string,
+    dsapellido:string,
+    dsciudad:string,
+    dsdireccion:string,
+    nmtelefono:Number
+  }
 }

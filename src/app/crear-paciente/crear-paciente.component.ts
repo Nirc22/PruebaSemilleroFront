@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Pacientes } from '../interfaces/pacientes';
 import { PacientesService } from '../services/pacientes/pacientes.service';
+import { PersonasService } from '../services/personas/personas.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Razas } from '../interfaces/razas';
 import { Especies } from '../interfaces/especies';
 import { TipoDocumento } from '../interfaces/tipo-documento';
+import { Personas } from '../interfaces/personas';
 
 @Component({
   selector: 'app-crear-paciente',
@@ -22,6 +24,7 @@ export class CrearPacienteComponent implements OnInit {
   razas:Razas[] = [];
   especies:Especies[] = [];
   tipoDocumentos:TipoDocumento[] = [];
+  personas:Personas[] = [];
 
   selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}}
 
@@ -36,24 +39,19 @@ export class CrearPacienteComponent implements OnInit {
       nmidraza: new FormControl('')
     }),
     fenacimiento: ['',Validators.required],
-    nmidtipoidentificacion: new FormGroup({
-      nmidtipoidentificacion: new FormControl('')
-    }),
-    nmidentificacion: ['',[Validators.required]],
-    dsduenio: ['',[Validators.required]],
-    dsciudad: ['',[Validators.required]],
-    dsdireccion: ['',[Validators.required]],
-    nmtelefono: ['',[Validators.required]],
     feregistro: ['',[Validators.required]],
-
+    nmidpersona: new FormGroup({
+      nmidpersona: new FormControl('')
+    }),
   });
 
-  constructor(private formBuider:FormBuilder, private pacientesService:PacientesService, private router: Router ) { }
+  constructor(private formBuider:FormBuilder, private pacientesService:PacientesService, private router: Router, private personasService:PersonasService ) { }
 
   ngOnInit(): void {
     this.obtenerRazas();
     this.obtenerEspecies();
     this.obtenerTipoDocumentos();
+    this.obtenerPersonas();
   }
 
   crearPaciente(){
@@ -91,6 +89,14 @@ export class CrearPacienteComponent implements OnInit {
     .subscribe((tipoDocumentos: any)=>{
       this.tipoDocumentos = tipoDocumentos;
       console.log("Documentos", this.tipoDocumentos)
+    });
+  }
+
+  obtenerPersonas(){
+    this.personasService.getPersonas(environment.urlApi+"getPersonas")
+      .subscribe((personas: any)=>{
+      this.personas = personas;
+      console.log("Personas", this.personas)
     });
   }
 

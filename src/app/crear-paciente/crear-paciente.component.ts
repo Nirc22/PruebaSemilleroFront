@@ -22,10 +22,13 @@ export class CrearPacienteComponent implements OnInit {
   errorMessage:String="";
 
   razas:Razas[] = [];
+  raza:Razas[] = [];
+  razasData:Razas[] = [];
   especies:Especies[] = [];
   personas:Personas[] = [];
 
-  selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}}
+  selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}};
+  selectEspecies:Especies = {nmidespecie: 0, dsnombre: ""};
 
 
   // crearpaciente: Pacientes = this.formBuider.group({
@@ -90,6 +93,11 @@ export class CrearPacienteComponent implements OnInit {
       this.personas = personas;
       console.log("Personas", this.personas)
     });
+  }
+
+  onSelectSemillero($event: any){
+    this.raza = this.razas.filter(item => item.nmidespecie.nmidespecie == this.selectEspecies.nmidespecie);
+    console.log("Razassss", this.raza)
   }
 
   volver(){

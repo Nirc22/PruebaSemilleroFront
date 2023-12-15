@@ -6,7 +6,7 @@
   <div class="col-md-4" formGroupName="nmidespecie">
     <label for="nmidespecie" class="form-label">Especie</label>
     <br>
-    <select class="form-control" id="nmidespecie" formControlName="nmidespecie"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+    <select class="form-control" id="nmidespecie" formControlName="nmidespecie" [(ngModel)]="selectEspecies.nmidespecie" (change)="onSelectSemillero($event)"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let especie of especies" value={{especie.nmidespecie}}>{{especie.dsnombre}}</option>
     </select>
 
@@ -16,7 +16,7 @@
     <label for="nmidraza" class="form-label">Raza</label>
     <br>
     <select class="form-control" id="nmidraza" formControlName="nmidraza"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
-      <option class="form-option" id="nmidraza" *ngFor="let raza of razas" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
+      <option class="form-option" id="nmidraza" *ngFor="let raza of raza" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
     </select>
     <!-- <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" > -->
   </div>

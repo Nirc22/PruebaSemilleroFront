@@ -33,7 +33,6 @@ export class PacientesComponent implements OnInit {
   ngOnInit(): void {
     this.optenerPacientes();
 
-
   }
 
   optenerPacientes(){

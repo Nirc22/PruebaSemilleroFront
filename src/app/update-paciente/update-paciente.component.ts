@@ -25,6 +25,7 @@ export class UpdatePacienteComponent implements OnInit {
   id = 0;
 
   updatepaciente: FormGroup = this.formBuilder.group({
+    nmid:'',
     dsnombre: ['',[Validators.required]],
     nmidespecie: new FormGroup({
       nmidespecie: new FormControl(''),
@@ -48,19 +49,20 @@ export class UpdatePacienteComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private pacientesService:PacientesService, private router:Router ) { }
 
   ngOnInit(): void {
-    this.updatePaciente();
+    this.getPacienteId();
     this.obtenerRazas();
     this.obtenerEspecies();
     this.optenerTipoDocumentos();
   }
 
-  updatePaciente() {
+  getPacienteId() {
     let id = Number(localStorage.getItem("id"));
     this.pacientesService.getPacienteId(id)
       .subscribe((data: any) =>{
         this.paciente = data;
         console.log(this.paciente)
         this.updatepaciente.setValue({
+          nmid: data.nmid,
           dsnombre: data.dsnombre,
           nmidespecie: {nmidespecie: data.nmidespecie.nmidespecie},
           nmidraza: {nmidraza: data.nmidraza.nmidraza},
@@ -74,6 +76,17 @@ export class UpdatePacienteComponent implements OnInit {
           feregistro: data.feregistro,
         })
 
+      })
+  }
+
+  updatePaciente(){
+    const paciente = this.updatepaciente.value;
+    console.log("Update", paciente)
+    this.pacientesService.updatePaciente(paciente)
+      .subscribe((data: any)=>{
+        this.paciente = data;
+        console.log("Paciente actualizado");
+        this.router.navigate(['dashboard']);
       })
   }
 
@@ -100,6 +113,10 @@ export class UpdatePacienteComponent implements OnInit {
       this.tipoDocumentos = tipoDocumentos;
       console.log("Documentos", this.tipoDocumentos)
     });
+  }
+
+  volver(){
+    this.router.navigate(['dashboard']);
   }
 
 }

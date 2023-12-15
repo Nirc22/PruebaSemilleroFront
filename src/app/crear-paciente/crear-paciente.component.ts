@@ -94,5 +94,9 @@ export class CrearPacienteComponent implements OnInit {
     });
   }
 
+  volver(){
+    this.router.navigate(['dashboard']);
+  }
+
 
 }

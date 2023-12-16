@@ -33,7 +33,7 @@ export class CrearPacienteComponent implements OnInit {
 
   // crearpaciente: Pacientes = this.formBuider.group({
   crearpaciente: FormGroup = this.formBuider.group({
-    dsnombre: ['',[Validators.required]],
+    dsnombre: new FormControl('',Validators.required),
     nmidespecie: new FormGroup({
       nmidespecie: new FormControl(''),
     }),

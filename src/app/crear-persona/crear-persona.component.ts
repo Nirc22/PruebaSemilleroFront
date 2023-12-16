@@ -20,7 +20,7 @@ export class CrearPersonaComponent implements OnInit {
   crearpersona: FormGroup = this.forBuilder.group({
     //nmidpersona: ['', [Validators.required]],
     nmidtipoidentificacion: new FormGroup({
-      nmidtipoidentificacion: new FormControl(''),
+      nmidtipoidentificacion: new FormControl('', Validators.required),
     }),
     nmidentificacion: ['', [Validators.required]],
     dsnombre: ['', [Validators.required]],

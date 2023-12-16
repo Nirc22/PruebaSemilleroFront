@@ -21,12 +21,12 @@ export class UpdatePersonaComponent implements OnInit {
   updatepersona: FormGroup = this.formBuilder.group({
     nmidpersona: '',
     nmidtipoidentificacion: new FormGroup({
-      nmidtipoidentificacion: new FormControl(''),
+      nmidtipoidentificacion: new FormControl({value:'', disabled: true}),
     }),
-    nmidentificacion: ['',[Validators.required]],
-    dsnombre: ['',[Validators.required]],
-    dsapellido: ['',[Validators.required]],
-    dsciudad: ['',[Validators.required]],
+    nmidentificacion: new FormControl({value:'', disabled: true},[Validators.required]),
+    dsnombre: new FormControl({value:'', disabled: true},[Validators.required]),
+    dsapellido: new FormControl({value:'', disabled: true},[Validators.required]),
+    dsciudad: new FormControl('',Validators.required),
     dsdireccion: ['',[Validators.required]],
     nmtelefono: ['',[Validators.required]]
 

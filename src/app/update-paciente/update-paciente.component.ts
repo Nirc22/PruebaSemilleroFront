@@ -28,18 +28,18 @@ export class UpdatePacienteComponent implements OnInit {
 
   updatepaciente: FormGroup = this.formBuilder.group({
     nmid:'',
-    dsnombre: ['',[Validators.required]],
+    dsnombre: new FormControl({value:'', disabled: true}),
     nmidespecie: new FormGroup({
-      nmidespecie: new FormControl(''),
+      nmidespecie: new FormControl({value: '', disabled: true}),
     }),
     nmidraza: new FormGroup({
-      nmidraza: new FormControl('')
+      nmidraza: new FormControl({value:'', disabled: true}),
     }),
-    fenacimiento: ['',Validators.required],
+    fenacimiento: new FormControl ({value:'', disabled: true },Validators.required),
     nmidpersona: new FormGroup({
       nmidpersona: new FormControl(''),
     }),
-    feregistro: ['',[Validators.required]],
+    feregistro: new FormControl({value: '', disabled: true},Validators.required),
   });
 
   constructor(private formBuilder:FormBuilder, private pacientesService:PacientesService, private router:Router, private personasService:PersonasService ) { }

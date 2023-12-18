@@ -2,16 +2,19 @@
   <div class="col-md-4">
     <label for="dsnombre" class="form-label">Nombre Paciente</label>
     <input type="text" class="form-control" id="dsnombre" formControlName="dsnombre">
-    <!-- <div class="alert alert-danger mt-2">
+    <div class="alert alert-danger mt-2" [hidden]="dsnombre.valid || dsnombre.pristine && dsnombre.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
       El nombre paciente es obligatorio
-    </div> -->
+    </div>
   </div>
   <div class="col-md-4" formGroupName="nmidespecie">
     <label for="nmidespecie" class="form-label">Especie</label>
     <br>
-    <select class="form-control" id="nmidespecie" formControlName="nmidespecie" [(ngModel)]="selectEspecies.nmidespecie" (change)="onSelectSemillero($event)"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
+    <select class="form-control" id="nmidespecie" formControlName="nmidespecie" [(ngModel)]="selectEspecies.nmidespecie" (change)="onSelectEspecies($event)"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option *ngFor="let especie of especies" value={{especie.nmidespecie}}>{{especie.dsnombre}}</option>
     </select>
+    <div class="alert alert-danger mt-2" [hidden]="nmidespecie.dirty || nmidespecie.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      Elegir la especie es olbligatorio
+    </div>
 
     <!-- <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" > -->
   </div>
@@ -21,22 +24,18 @@
     <select class="form-control" id="nmidraza" formControlName="nmidraza"> <!--class="option" [(ngModel)]="selectRaza.nmidraza"-->
       <option class="form-option" id="nmidraza" *ngFor="let raza of raza" value={{raza.nmidraza}}>{{raza.dsnombre}}</option>
     </select>
+    <div class="alert alert-danger mt-2" [hidden]="nmidraza.dirty || nmidraza.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      Elegir la raza es olbligatorio
+    </div>
     <!-- <input type="number" class="form-control" id="nmidraza" formControlName="nmidraza" > -->
   </div>
   <div class="col-md-4">
     <label for="fenacimiento" class="form-label">Fecha de nacimiento</label>
-    <input type="date" class="form-control" id="fenacimiento" formControlName="fenacimiento" >
+    <input type="date" class="form-control" id="fenacimiento" formControlName="fenacimiento">
+    <div class="alert alert-danger mt-2" [hidden]="fenacimiento.valid || fenacimiento.pristine && fenacimiento.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La fecha de nacimiento es obligatoria
+    </div>
   </div>
-
-<!--
-  <div class="col-md-4" formGroupName="nmidtipoidentificacion">
-    <label for="nmidtipoidentificacion" class="form-label">Tipo de identificación</label>
-    <br>
-    <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion">
-      <option *ngFor="let tipodocumento of tipoDocumentos" value={{tipodocumento.nmidtipoidentificacion}}>{{tipodocumento.dsnombre}}</option>
-    </select>
-  </div>
--->
 
   <div class="col-md-4" formGroupName="nmidpersona">
     <label for="nmidpersona" class="form-label">Dueño</label>
@@ -44,35 +43,21 @@
     <select class="form-control" id="nmidpersona" formControlName="nmidpersona">
       <option *ngFor="let persona of personas" value={{persona.nmidpersona}}>{{persona.dsnombre}} {{persona.dsapellido}}</option>
     </select>
+    <div class="alert alert-danger mt-2" [hidden]="nmidpersona.dirty || nmidpersona.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      Elegir la persona es olbligatorio
+    </div>
   </div>
 
-  <!-- <div class="col-md-4">
-    <label for="nmidentificacion" class="form-label">Número de identificación</label>
-    <input type="number" class="form-control" id="nmidentificacion" formControlName="nmidentificacion" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsduenio" class="form-label">Dueño</label>
-    <input type="text" class="form-control" id="dsduenio" formControlName="dsduenio" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsciudad" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="dsciudad" formControlName="dsciudad" >
-  </div>
-  <div class="col-md-4">
-    <label for="dsdireccion" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="dsdireccion" formControlName="dsdireccion" >
-  </div>
-  <div class="col-md-4">
-    <label for="nmtelefono" class="form-label">Teléfono</label>
-    <input type="number" class="form-control" id="nmtelefono" formControlName="nmtelefono" >
-  </div> -->
   <div class="col-md-4">
     <label for="feregistro" class="form-label">Fecha de registro</label>
     <input type="date" class="form-control" id="feregistro" formControlName="feregistro" >
+    <div class="alert alert-danger mt-2" [hidden]="feregistro.valid || feregistro.pristine && feregistro.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La fecha de registro es obligatoria
+    </div>
   </div>
 
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Crear</button>
+    <button class="btn btn-primary" type="submit" [disabled]="crearpaciente.invalid">Crear</button>
 
     <button class="btn btn-primary" type="button" (click)="volver()">Regresar</button>
   </div>

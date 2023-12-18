@@ -39,6 +39,18 @@ export class UpdatePersonaComponent implements OnInit {
     this.optenerTipoDocumentos();
   }
 
+  get dsciudad(){
+    return this.updatepersona.get('dsciudad') as FormControl;
+  }
+
+  get dsdireccion(){
+    return this.updatepersona.get('dsdireccion') as FormControl;
+  }
+
+  get nmtelefono(){
+    return this.updatepersona.get('nmtelefono') as FormControl;
+  }
+
   getPersonaId(){
     let id = Number(localStorage.getItem("id"));
     this.personasService.getPersonaId(id)

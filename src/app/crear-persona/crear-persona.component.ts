@@ -37,6 +37,34 @@ export class CrearPersonaComponent implements OnInit {
     this.obtenerTipoDocumentos();
   }
 
+  get nmidtipoidentificacion(){
+    return this.crearpersona.get('nmidtipoidentificacion') as FormControl;
+  }
+
+  get nmidentificacion(){
+    return this.crearpersona.get('nmidentificacion') as FormControl;
+  }
+
+  get dsnombre(){
+    return this.crearpersona.get('dsnombre') as FormControl;
+  }
+
+  get dsapellido(){
+    return this.crearpersona.get('dsapellido') as FormControl;
+  }
+
+  get dsciudad(){
+    return this.crearpersona.get('dsciudad') as FormControl;
+  }
+
+  get dsdireccion(){
+    return this.crearpersona.get('dsdireccion') as FormControl;
+  }
+
+  get nmtelefono(){
+    return this.crearpersona.get('nmtelefono') as FormControl;
+  }
+
   crearPersona(){
     const persona = this.crearpersona.value;
     console.log("persona", persona);

@@ -5,39 +5,56 @@
     <select class="form-control" id="nmidtipoidentificacion" formControlName="nmidtipoidentificacion">
       <option *ngFor="let tipoDocumento of tipoDocumentos" value={{tipoDocumento.nmidtipoidentificacion}}>{{tipoDocumento.dsnombre}}</option>
     </select>
+    <div class="alert alert-danger mt-2" [hidden]="nmidtipoidentificacion.dirty || nmidtipoidentificacion.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      Elegir la tipo documento es obligatorio
+    </div>
   </div>
 
   <div class="col-md-4">
     <label for="nmidentificacion" class="form-label">Número de identificación</label>
     <input type="number" class="form-control" id="nmidentificacion" formControlName="nmidentificacion" >
+    <div class="alert alert-danger mt-2" [hidden]="nmidentificacion.valid || nmidentificacion.pristine && nmidentificacion.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      El número de identificación es obligatorio
+    </div>
   </div>
   <div class="col-md-4">
     <label for="dsnombre" class="form-label">Nombre</label>
     <input type="text" class="form-control" id="dsnombre" formControlName="dsnombre" >
+    <div class="alert alert-danger mt-2" [hidden]="dsnombre.valid || dsnombre.pristine && dsnombre.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      El nombre es obligatorio
+    </div>
   </div>
   <div class="col-md-4">
     <label for="dsapellido" class="form-label">Apellido</label>
     <input type="text" class="form-control" id="dsapellido" formControlName="dsapellido" >
+    <div class="alert alert-danger mt-2" [hidden]="dsapellido.valid || dsapellido.pristine && dsapellido.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      El apellido es obligatorio
+    </div>
   </div>
   <div class="col-md-4">
     <label for="dsciudad" class="form-label">Ciudad</label>
     <input type="text" class="form-control" id="dsciudad" formControlName="dsciudad" >
+    <div class="alert alert-danger mt-2" [hidden]="dsciudad.valid || dsciudad.pristine && dsciudad.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La ciudad es obligatoria
+    </div>
   </div>
   <div class="col-md-4">
     <label for="dsdireccion" class="form-label">Dirección</label>
     <input type="text" class="form-control" id="dsdireccion" formControlName="dsdireccion" >
+    <div class="alert alert-danger mt-2" [hidden]="dsdireccion.valid || dsdireccion.pristine && dsdireccion.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La dirección es obligatoria
+    </div>
   </div>
   <div class="col-md-4">
     <label for="nmtelefono" class="form-label">Teléfono</label>
     <input type="number" class="form-control" id="nmtelefono" formControlName="nmtelefono" >
+    <div class="alert alert-danger mt-2" [hidden]="nmtelefono.valid || nmtelefono.pristine && nmtelefono.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      El teléfono es obligatorio
+    </div>
   </div>
-  <!-- <div class="col-md-4">
-    <label for="feregistro" class="form-label">Fecha de registro</label>
-    <input type="date" class="form-control" id="feregistro" formControlName="feregistro" >
-  </div> -->
 
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Crear</button>
+    <button class="btn btn-primary" type="submit" [disabled]="crearpersona.invalid">Crear</button>
 
     <button class="btn btn-primary" type="button" (click)="volver()">Regresar</button>
   </div>

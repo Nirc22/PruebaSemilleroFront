@@ -20,22 +20,31 @@
   </div>
   <div class="col-md-4">
     <label for="dsciudad" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="ngModel"formControlName="dsciudad">
+    <input type="text" class="form-control" id="dsciudad"formControlName="dsciudad">
+    <div class="alert alert-danger mt-2" [hidden]="dsciudad.valid || dsciudad.pristine && dsciudad.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La ciudad es obligatoria
+    </div>
   </div>
   <div class="col-md-4">
     <label for="dsdireccion" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="ngModel"formControlName="dsdireccion">
+    <input type="text" class="form-control" id="dsdireccion"formControlName="dsdireccion">
+    <div class="alert alert-danger mt-2" [hidden]="dsdireccion.valid || dsdireccion.pristine && dsdireccion.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      La dirección es obligatoria
+    </div>
   </div>
   <div class="col-md-4">
     <label for="nmtelefono" class="form-label">Teléfono</label>
-    <input type="text" class="form-control" id="ngModel"formControlName="nmtelefono">
+    <input type="text" class="form-control" id="nmtelefono"formControlName="nmtelefono">
+    <div class="alert alert-danger mt-2" [hidden]="nmtelefono.valid || nmtelefono.pristine && nmtelefono.untouched"> <!-- (dsnombre.dirty || dsnombre.touched)-->
+      El teléfono es obligatorio
+    </div>
   </div>
 
 
     <!-- <input type="number" class="form-control" id="nmidespecie" formControlName="nmidespecie" > -->
 
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Actualizar</button>
+    <button class="btn btn-primary" type="submit" [disabled]="updatepersona.invalid">Actualizar</button>
 
     <button class="btn btn-primary" type="button" (click)="volver()">Regresar</button>
   </div>

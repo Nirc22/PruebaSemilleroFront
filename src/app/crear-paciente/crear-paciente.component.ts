@@ -9,6 +9,7 @@ import { Razas } from '../interfaces/razas';
 import { Especies } from '../interfaces/especies';
 import { TipoDocumento } from '../interfaces/tipo-documento';
 import { Personas } from '../interfaces/personas';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-crear-paciente',
@@ -27,33 +28,59 @@ export class CrearPacienteComponent implements OnInit {
   especies:Especies[] = [];
   personas:Personas[] = [];
 
-  selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}};
+  //selectRaza:Razas = {nmidraza:0, dsnombre:"", nmidespecie:{nmidespecie:0, dsnombre:""}};
   selectEspecies:Especies = {nmidespecie: 0, dsnombre: ""};
 
 
   // crearpaciente: Pacientes = this.formBuider.group({
   crearpaciente: FormGroup = this.formBuider.group({
-    dsnombre: new FormControl('',Validators.required),
+    dsnombre: ['',[Validators.required]],
     nmidespecie: new FormGroup({
       nmidespecie: new FormControl(''),
     }),
     nmidraza: new FormGroup({
       nmidraza: new FormControl('')
     }),
-    fenacimiento: ['',Validators.required],
+    fenacimiento: ['',[Validators.required]],
     feregistro: ['',[Validators.required]],
     nmidpersona: new FormGroup({
       nmidpersona: new FormControl('')
     }),
   });
 
-  constructor(private formBuider:FormBuilder, private pacientesService:PacientesService, private router: Router, private personasService:PersonasService ) { }
+  constructor(private formBuider:FormBuilder, private pacientesService:PacientesService, private router: Router, private personasService:PersonasService) { }
 
   ngOnInit(): void {
     this.obtenerRazas();
     this.obtenerEspecies();
     this.obtenerPersonas();
   }
+
+  get dsnombre(){
+    return this.crearpaciente.get('dsnombre') as FormControl;
+  }
+
+  get fenacimiento(){
+    return this.crearpaciente.get('fenacimiento') as FormControl;
+  }
+
+  get feregistro(){
+    return this.crearpaciente.get('feregistro') as FormControl;
+  }
+
+  get nmidespecie(){
+    return this.crearpaciente.get('nmidespecie') as FormControl;
+  }
+
+  get nmidraza(){
+    return this.crearpaciente.get('nmidraza') as FormControl;
+  }
+
+  get nmidpersona(){
+    return this.crearpaciente.get('nmidpersona') as FormControl;
+  }
+
+
 
   crearPaciente(){
     const paciente = this.crearpaciente.value;
@@ -95,7 +122,7 @@ export class CrearPacienteComponent implements OnInit {
     });
   }
 
-  onSelectSemillero($event: any){
+  onSelectEspecies($event: any){
     this.raza = this.razas.filter(item => item.nmidespecie.nmidespecie == this.selectEspecies.nmidespecie);
     console.log("Razassss", this.raza)
   }

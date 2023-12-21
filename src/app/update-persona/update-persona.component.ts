@@ -6,6 +6,7 @@ import { PersonasService } from '../services/personas/personas.service';
 import { Personas } from '../interfaces/personas';
 import { environment } from 'src/environments/environment';
 import { TipoDocumento } from '../interfaces/tipo-documento';
+import { Pacientes } from '../interfaces/pacientes';
 
 @Component({
   selector: 'app-update-persona',
@@ -17,6 +18,7 @@ export class UpdatePersonaComponent implements OnInit {
   //personas:Personas[] = [];
   persona:Personas[] = [];
   tipoDocumentos:TipoDocumento[] = [];
+  paciente:Pacientes[] = [];
 
   updatepersona: FormGroup = this.formBuilder.group({
     nmidpersona: '',
@@ -92,8 +94,12 @@ export class UpdatePersonaComponent implements OnInit {
   }
 
   volver(){
+    this.pacientesService.getPacientes(environment.urlApi+"pacientes")
+    .subscribe((paciente: any)=>{
+      this.paciente = paciente;
+    });
     this.router.navigate(['dashboard']);
-    localStorage.removeItem("id")
   }
+
 
 }

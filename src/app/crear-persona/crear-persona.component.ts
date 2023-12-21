@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { PacientesService } from '../services/pacientes/pacientes.service';
 import { TipoDocumento } from '../interfaces/tipo-documento';
 import { Personas } from '../interfaces/personas';
+import { Pacientes } from '../interfaces/pacientes';
 
 @Component({
   selector: 'app-crear-persona',
@@ -16,6 +17,7 @@ export class CrearPersonaComponent implements OnInit {
 
   tipoDocumentos:TipoDocumento [] = [];
   persona:Personas[] = [];
+  paciente:Pacientes[] = [];
 
   crearpersona: FormGroup = this.forBuilder.group({
     //nmidpersona: ['', [Validators.required]],
@@ -86,6 +88,10 @@ export class CrearPersonaComponent implements OnInit {
   }
 
   volver(){
+    this.pacientesService.getPacientes(environment.urlApi+"pacientes")
+    .subscribe((paciente: any)=>{
+      this.paciente = paciente;
+    });
     this.router.navigate(['dashboard']);
   }
 

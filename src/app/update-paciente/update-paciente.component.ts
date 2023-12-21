@@ -117,8 +117,12 @@ export class UpdatePacienteComponent implements OnInit {
   }
 
   volver(){
+    this.pacientesService.getPacientes(environment.urlApi+"pacientes")
+    .subscribe((paciente: any)=>{
+      this.paciente = paciente;
+    });
     this.router.navigate(['dashboard']);
-    localStorage.removeItem("id")
   }
+
 
 }

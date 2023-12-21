@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { PacientesService } from '../services/pacientes/pacientes.service';
 import { environment } from 'src/environments/environment';
 import { Pacientes } from '../interfaces/pacientes';
@@ -10,7 +10,7 @@ import { Personas } from '../interfaces/personas';
   templateUrl: './pacientes.component.html',
   styleUrls: ['./pacientes.component.scss']
 })
-export class PacientesComponent implements OnInit {
+export class PacientesComponent implements OnInit, OnChanges {
 
   errorMessage:String="";
   //pacientes?:Pacientes;
@@ -35,6 +35,9 @@ export class PacientesComponent implements OnInit {
   ngOnInit(): void {
     this.optenerPacientes();
 
+  }
+  ngOnChanges ():void{
+    this.optenerPacientes();
   }
 
   optenerPacientes(){

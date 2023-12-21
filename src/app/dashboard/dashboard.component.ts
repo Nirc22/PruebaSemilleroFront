@@ -3,6 +3,8 @@ import { LoginService } from '../services/auth/login.service';
 import { PacientesService } from '../services/pacientes/pacientes.service'
 import { Administrador } from '../interfaces/administrador';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
   userData?:Administrador;
 
 
-  constructor(private loginService:LoginService, private pacientesService: PacientesService ){}
+  constructor(private loginService:LoginService, private pacientesService: PacientesService, private router: Router){}
   ngOnDestroy(): void {
     this.loginService.currentUserData.unsubscribe();
     this.loginService.currentUserLoginOn.unsubscribe();
@@ -37,6 +39,13 @@ export class DashboardComponent implements OnInit, OnDestroy{
 //    })
   }
 
+  logout():void{
+    this.loginService.logout();
+    this.router.navigate(['login']);
+
+
+  }
+
   exportPacientes(){
     this.pacientesService.exportPacientes()
       .subscribe(response=>{
@@ -51,6 +60,13 @@ export class DashboardComponent implements OnInit, OnDestroy{
       })
   }
 
+  crearPersona(){
+    this.router.navigate(['crearPersona']);
+  }
+
+  crearPaciente(){
+    this.router.navigate(['crearPaciente']);
+  }
 
 
 

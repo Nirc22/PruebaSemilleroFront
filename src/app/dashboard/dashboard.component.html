@@ -1,9 +1,19 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="crearPaciente">Crear Paciente</a>
-    <a class="navbar-brand" href="crearPersona">Crear Persona</a>
-    <button>
-      <a class="navbar-brand" (click)="exportPacientes()">Descargar Pacientes</a>
+    <button class="btn">
+      <i class="bi bi-patch-plus" (click)="crearPaciente()"></i>
+    </button>
+    <!-- <a class="navbar-brand" href="crearPaciente">Crear Paciente</a> -->
+    <button class="btn">
+      <i class="bi bi-person-add" (click)="crearPersona()"></i>
+    </button>
+    <button class="btn">
+      <i class="bi bi-file-earmark-arrow-down" (click)="exportPacientes()"></i>
+      <!-- <a class="navbar-brand" >Descargar Pacientes</a> -->
+    </button>
+    <button class="btn">
+      <i class="bi bi-box-arrow-in-right"(click)="logout()"></i>
+      <!-- <a class="navbar-brand">Logout</a> -->
     </button>
 
   </div>

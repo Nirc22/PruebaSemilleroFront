@@ -70,5 +70,9 @@ export class PacientesService {
     )
   }
 
+  exportPacientes(){
+    return this.http.get(environment.urlApi+"exportPacientes", {observe: 'response', responseType: 'blob'})
+  }
+
 
 }

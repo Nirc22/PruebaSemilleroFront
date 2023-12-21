@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../services/auth/login.service';
+import { PacientesService } from '../services/pacientes/pacientes.service'
 import { Administrador } from '../interfaces/administrador';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
   userData?:Administrador;
 
 
-  constructor(private loginService:LoginService){}
+  constructor(private loginService:LoginService, private pacientesService: PacientesService ){}
   ngOnDestroy(): void {
     this.loginService.currentUserData.unsubscribe();
     this.loginService.currentUserLoginOn.unsubscribe();
@@ -26,11 +28,31 @@ export class DashboardComponent implements OnInit, OnDestroy{
       }
     });
 
+
+
 //    this.loginService.currentUserData.subscribe({
 //      next:(userData) => {
 //        this.userData=userData;
 //      }
 //    })
   }
+
+  exportPacientes(){
+    this.pacientesService.exportPacientes()
+      .subscribe(response=>{
+
+        let fileName = "pacientes.xls";//response.headers.get('Content-Disposition')?.split(';')[1].split('=')[1];
+        let blob:Blob=response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+
+      })
+  }
+
+
+
+
 
 }
